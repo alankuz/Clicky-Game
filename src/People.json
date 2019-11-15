@@ -1,0 +1,38 @@
+  
+[{
+    "id": 1,
+    "image": "./src/Pictures/barber.png"
+  },
+  {
+    "id": 2,
+    "image": "./Pictures/flapjack.png"
+  },
+  {
+    "id": 3,
+
+    "image": "./Pictures/guy.png"
+  },
+  {
+    "id": 4,
+    "image": "./Pictures/knuckles.png"
+  },
+  {
+    "id": 5,
+    "image": "./Pictures/larry.png"
+  },
+  {
+    "id": 6,
+    "image": "./Pictures/oldie.png"
+
+  },
+  {
+    "id": 7,
+    "image": "./Pictures/pete.png"
+
+  },
+  {
+    "id": 8,
+    "image": "./Pictures/sally.png"
+
+  }
+]
