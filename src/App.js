@@ -29,7 +29,7 @@ class App extends Component {
       if (CS > HS) {
         this.setState({ highScore: [CS] })
       }
-      this.setState({ clickedIds: [], score: 0, status: "Game Over! You lost. Click to play again!" });
+      this.setState({ clickedIds: [], score: 0, status: "Game Over! Click to play again!" });
       return;
     } else {
       clickedIds.push(id)
@@ -48,6 +48,7 @@ class App extends Component {
 
         <Navbar expand="lg" variant="dark" bg="dark">
           <Navbar.Brand >FlapJack Clicky-Game</Navbar.Brand>
+    <Nav className="ml-auto mr-auto scores" >{this.state.status}</Nav>
           <Nav className="ml-auto scores">Total Score: {this.state.score} Highscore: {this.state.highScore} </Nav>
         </Navbar>
         {this.state.peeps.map(person => (
@@ -55,7 +56,6 @@ class App extends Component {
             <img
               shuffler={this.shuffler}
               id={person.id}
-              key={person.id}
               src={person.image}
               alt="brokenimage"
               onClick={() => this.shuffler(person.id)} className='shuffleScore' />
