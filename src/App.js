@@ -16,24 +16,49 @@ class App extends Component {
     peeps,
     clickedIds: [],
     score: 0,
-    goal: 10,
+    highScore: 0,
     status: ""
   };
+  shuffler = id => {
+    let clickedIds = this.state.clickedIds;
+
+    if (clickedIds.includes(id)) {
+      let CS = this.state.score;
+      let HS = this.state.highScore;
+      console.log(HS)
+      if (CS > HS) {
+        this.setState({ highScore: [CS] })
+      }
+      this.setState({ clickedIds: [], score: 0, status: "Game Over! You lost. Click to play again!" });
+      return;
+    } else {
+      clickedIds.push(id)
+
+      this.setState({ peeps, clickedIds, score: clickedIds.length, status: " " });
+
+      for (let i = peeps.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [peeps[i], peeps[j]] = [peeps[j], peeps[i]];
+      }
+    }
+  }
   render() {
     return (
       <Container>
 
         <Navbar expand="lg" variant="dark" bg="dark">
-          <Navbar.Brand >Clicky-Game</Navbar.Brand>
-          <Nav className="ml-auto">Total Score: {this.state.count}</Nav>
+          <Navbar.Brand >FlapJack Clicky-Game</Navbar.Brand>
+          <Nav className="ml-auto scores">Total Score: {this.state.score} Highscore: {this.state.highScore} </Nav>
         </Navbar>
         {this.state.peeps.map(person => (
-          <Card>
+          <Card className="shuffleScore">
             <img
-          id={person.id}
-          key={person.id}
-          src={person.image}
-          alt="brokenimage"/>
+              shuffler={this.shuffler}
+              id={person.id}
+              key={person.id}
+              src={person.image}
+              alt="brokenimage"
+              onClick={() => this.shuffler(person.id)} className='shuffleScore' />
           </Card>
         ))}
       </Container>
